@@ -13,6 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <Header/>
+        <h1>Hello</h1>
         <Routes>
           <Route path = "/" element={<EnterForm/>} />
           <Route path = "/game" element={<Game/>} />
