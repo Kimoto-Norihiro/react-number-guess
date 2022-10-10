@@ -9,12 +9,21 @@ const Game = () => {
   const [count, setCount] = useState(0)
   const [randomNum, setRandomNum] = useState(Math.floor(Math.random() * 100) + 1)
 
-  const checkGuess = (event) => {
+  const checkGuess = (guess) => {
+    if (guess===randomNum) {
+      setGuesses(guesses + ' ' + guess)
+      setLastResult('atari')
+      setLowOrHi('atari')
+      setCount(count + 1)
+    }else {
+      setGuesses(guesses + ' ' + guess)
+      setLastResult('hazure')
+      setLowOrHi('hazure')
+      setCount(count + 1)
+    }
 
-    setGuesses('')
-    setLastResult('')
-    setLowOrHi('')
-    setCount('')
+    setGuess('')
+    
   }
 
   const resetGame = () => {
@@ -27,7 +36,7 @@ const Game = () => {
           <div class="input-group">
             <label>予想を入力してください</label>
             <input 
-            onChange={(event) => setGuess(event)}
+            onChange={(event) => setGuess(event.target.value)}
             type={'text'}
             value={guess}/>
             <button 
@@ -43,8 +52,6 @@ const Game = () => {
           <p>{ count }</p>
           <p>{ randomNum }</p>
         </div>
-
-        <Link to="/result">ゲームクリア</Link>
     </div>
   )
 }
